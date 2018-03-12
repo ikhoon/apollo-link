@@ -1,10 +1,10 @@
 import { ApolloLink, Observable, Operation } from 'apollo-link';
 import { GraphQLError, ExecutionResult } from 'graphql';
-import { ServerError } from 'apollo-link-http-common';
+import { ServerError, ServerParseError } from 'apollo-link-http-common';
 
 export interface ErrorResponse {
   graphQLErrors?: GraphQLError[];
-  networkError?: ServerError;
+  networkError?: Error | ServerError | ServerParseError;
   response?: ExecutionResult;
   operation: Operation;
 }
